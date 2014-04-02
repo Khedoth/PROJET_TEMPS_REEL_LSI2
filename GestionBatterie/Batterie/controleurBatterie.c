@@ -3,12 +3,13 @@
 
 /*
  * Inputs :
- * 	alarme
+ * 	forcageAlim
  *  onOff
- *  arretUrgence
+ *  chargeBatterie
  * 
  * Outputs :
- *  arretUrgence
- *  alarme
+ *  modeBatterie
+ *  choixDemux
+ *  choixMux
  * 
  */

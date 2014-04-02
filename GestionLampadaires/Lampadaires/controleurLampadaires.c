@@ -3,12 +3,12 @@
 
 /*
  * Inputs :
- * 	alarme
+ * 	temps
+ *  eclairageGlobal
  *  onOff
- *  arretUrgence
+ *  modeBatterie
  * 
  * Outputs :
- *  arretUrgence
- *  alarme
+ *  reglageTension
  * 
  */
