@@ -85,26 +85,44 @@
 #define SVV3_2 18
 #define SVV3_3 19
 
+	/*
+	 * Charge Batterie
+	 */
+
+#define SCB 20
+
+	/*
+	 * Eclairage Global
+	 */
+
+#define SEG 21
+
+	/*
+	 * Temps
+	 */
+
+#define ST 22
+
 
 /*
  * rotationMatH_i : simule les signaux des capteurs de rotation des mâts dans le sens horaire
  * de l'éolienne i
  * 
- * void -> void
+ * int -> void
  */
-void rotationMatH_1(void);
-void rotationMatH_2(void);
-void rotationMatH_3(void);
+void rotationMatH_1(int arg);
+void rotationMatH_2(int arg);
+void rotationMatH_3(int arg);
 
 /*
  * rotationMatH_i : simule les signaux des capteurs de rotation des mâts dans le sens inverse du sens horaire
  * de l'éolienne i
  * 
- * void -> void
+ * int -> void
  */
-void rotationMatAH_1(void);
-void rotationMatAH_2(void);
-void rotationMatAH_3(void);
+void rotationMatAH_1(int arg);
+void rotationMatAH_2(int arg);
+void rotationMatAH_3(int arg);
 
 /*
  * vitesseVentj_i : simule les signaux des capteurs de vitesse du vent en position j pour l'éolienne i.
@@ -156,12 +174,12 @@ void chargeBatterie(void);
  * 
  * void -> void
  */
-void eclairageGlobal(void);
+void eclairageGlobal(int puissance);
 
 /*
  * temps : simule le signal envoyé par l'horloge.
  * 
- * void -> void
+ * int -> void
  */
 void temps(void);
 

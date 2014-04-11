@@ -12,10 +12,6 @@
  * 
  */
 
-int positionEolienne;
-
-
-
 int calculPositionMat(){
 	while(1){
 		if 
