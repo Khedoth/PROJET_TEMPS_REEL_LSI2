@@ -158,11 +158,7 @@ TpsReel_partialImage/$(MODE_DIR)/% : LIBPATH =
 TpsReel_partialImage/$(MODE_DIR)/% : LIBS = 
 TpsReel_partialImage/$(MODE_DIR)/% : OBJ_DIR := TpsReel_partialImage/$(MODE_DIR)
 
-TpsReel_partialImage/$(MODE_DIR)/Objects/TpsReel/test.o : /users/elo/jnokaya/ENSSAT2A/TPS\ REEL/WINDRIVER/TpsReel/test.c
-	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)dcc $(DEBUGFLAGS_C-Compiler) $(CC_ARCH_SPEC) -W:c:,-Xclib-optim-off -Xansi -Xlocal-data-area-static-only  -Xforce-declarations   -Xmake-dependency=0xd $(ADDED_CFLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
-
-
-OBJECTS_TpsReel_partialImage = TpsReel_partialImage/$(MODE_DIR)/Objects/TpsReel/test.o
+OBJECTS_TpsReel_partialImage =
 
 TpsReel_partialImage/$(MODE_DIR)/TpsReel_partialImage.o : $(OBJECTS_TpsReel_partialImage)
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)dld -tX86LH:vxworks66 -X -r5 -f 0x90,1,1  -o "$@" $(OBJECTS_TpsReel_partialImage) $(ADDED_OBJECTS) $(IDE_LIBRARIES) $(LIBPATH) $(LIBS) $(ADDED_LIBPATH) $(ADDED_LIBS) && if [ "$(EXPAND_DBG)" = "1" ]; then plink "$@";fi
@@ -173,9 +169,6 @@ _clean :: TpsReel_partialImage/$(MODE_DIR)/TpsReel_partialImage_clean
 
 TpsReel_partialImage/$(MODE_DIR)/TpsReel_partialImage_clean : 
 	$(TRACE_FLAG)if [ -d "TpsReel_partialImage" ]; then cd "TpsReel_partialImage"; rm -rf $(MODE_DIR); fi
-
-DEP_FILES := TpsReel_partialImage/$(MODE_DIR)/Objects/TpsReel/test.d
--include $(DEP_FILES)
 
 
 WIND_SCOPETOOLS_BASE := $(subst \,/,$(WIND_SCOPETOOLS_BASE))

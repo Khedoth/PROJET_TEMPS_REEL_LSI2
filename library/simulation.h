@@ -32,12 +32,59 @@
 #include "stdlib.h"
 #include "stdio.h"
 
+
+#define NB_EOL 3
+#define NB_CAP 3
+
+
 /*
  * Définition des tags des signaux
  */
-#define SRMH1
-#define SRMH2
-#define SRMH3
+
+	/*
+	 * Rotation Mât sens horaire
+	 */
+#define SRMH1 1
+#define SRMH2 2
+#define SRMH3 3
+
+	/*
+	 * Rotation Mât sens anti-horaire
+	 */
+#define SRMAH1 4
+#define SRMAH2 5
+#define SRMAH3 6
+
+	/*
+	 * Direction du vent moyen
+	 */
+
+#define SDVM 7
+
+	/*
+	 * Rotation Rotor
+	 */
+
+#define SRR1 8
+#define SRR2 9
+#define SRR3 10
+
+	/*
+	 * Vitesse du vent
+	 */
+
+#define SVV1_1 11
+#define SVV1_2 12
+#define SVV1_3 13
+
+#define SVV2_1 14
+#define SVV2_2 15
+#define SVV2_3 16
+
+#define SVV3_1 17
+#define SVV3_2 18
+#define SVV3_3 19
+
 
 /*
  * rotationMatH_i : simule les signaux des capteurs de rotation des mâts dans le sens horaire

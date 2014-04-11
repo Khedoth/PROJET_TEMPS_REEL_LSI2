@@ -28,7 +28,300 @@
 
 #include "simulation.h"
 
+/*
+ * Variables Globales
+ */
 
+int positionEolienne[NB_EOL];
+int positionRotor[NB_EOL];
+int directionVentMoyen;
+int vitesseVent[NB_EOL][NB_CAP];
+int positionMux;
+int positionDemux;
+
+void routineIT_RMH1() {
+	positionEolienne[0]=(positionEolienne[0]+1)%360;
+	//semGive();
+}
+void routineIT_RMH2() {
+	positionEolienne[1]=(positionEolienne[1]+1)%360;
+	//semGive();
+}
+void routineIT_RMH3() {
+	positionEolienne[1]=(positionEolienne[1]+1)%360;
+	//semGive();
+}
+
+void routineIT_RMAH1() {
+	positionEolienne[0]=(positionEolienne[0]-1)%360;
+	//semGive();
+}
+void routineIT_RMAH2()  {
+	positionEolienne[1]=(positionEolienne[1]-1)%360;
+	//semGive();
+}
+void routineIT_RMAH3() {
+	positionEolienne[2]=(positionEolienne[2]-1)%360;
+	//semGive();
+}
+
+void routineIT_DVM() {
+	int coefVar = rand()*50;
+	
+	if(rand()==0) {
+		directionVentMoyen=(directionVentMoyen-ceofVar)%360
+	} else {
+		directionVentMoyen=(directionVentMoyen+coefVar)%360;
+	}
+	//semGive();
+}
+
+void routineIT_RR1() {
+	positionRotor[0]=(positionRotor[0]+10)%360;
+	//semGive();
+}
+
+void routineIT_RR2()  {
+	positionRotor[1]=(positionRotor[1]+10)%360;
+	//semGive();
+}
+void routineIT_RR3()  {
+	positionRotor[2]=(positionRotor[2]+10)%360;
+	//semGive();
+}
+
+void routineIT_VV1_1() {
+	int coefVar = rand()*50;
+	
+	if(rand()==0) {
+		if((vitesseVent[0][0]-ceofVar)<=0) {
+			vitesseVent[0][0]=0;
+		} else {
+			vitesseVent[0][0]-=ceofVar;
+		}
+		
+	} else {
+		vitesseVent[0][0]+=ceofVar;
+	}
+	//semGive();
+}
+void routineIT_VV1_2() 	{
+	int coefVar = rand()*50;
+	
+	if(rand()==0) {
+		if((vitesseVent[1][0]-ceofVar)<=0) {
+			vitesseVent[1][0]=0;
+		} else {
+			vitesseVent[1][0]-=ceofVar;
+		}
+		
+	} else {
+		vitesseVent[1][0]+=ceofVar;
+	}
+	//semGive();
+}
+void routineIT_VV1_3() {
+	int coefVar = rand()*50;
+	
+	if(rand()==0) {
+		if((vitesseVent[2][0]-ceofVar)<=0) {
+			vitesseVent[2][0]=0;
+		} else {
+			vitesseVent[2][0]-=ceofVar;
+		}
+		
+	} else {
+		vitesseVent[2][0]+=ceofVar;
+	}
+	//semGive();
+}
+
+void routineIT_VV2_1() {
+	int coefVar = rand()*50;
+	
+	if(rand()==0) {
+		if((vitesseVent[0][1]-ceofVar)<=0) {
+			vitesseVent[0][1]=0;
+		} else {
+			vitesseVent[0][1]-=ceofVar;
+		}
+		
+	} else {
+		vitesseVent[0][1]+=ceofVar;
+	}
+	//semGive();
+}
+void routineIT_VV2_2() {
+	int coefVar = rand()*50;
+	
+	if(rand()==0) {
+		if((vitesseVent[1][1]-ceofVar)<=0) {
+			vitesseVent[1][1]=0;
+		} else {
+			vitesseVent[1][1]-=ceofVar;
+		}
+		
+	} else {
+		vitesseVent[1][1]+=ceofVar;
+	}
+	//semGive();
+}
+void routineIT_VV2_3() {
+	int coefVar = rand()*50;
+	
+	if(rand()==0) {
+		if((vitesseVent[2][1]-ceofVar)<=0) {
+			vitesseVent[2][1]=0;
+		} else {
+			vitesseVent[2][1]-=ceofVar;
+		}
+		
+	} else {
+		vitesseVent[2][1]+=ceofVar;
+	}
+	//semGive();
+}
+
+void routineIT_VV3_1() {
+	int coefVar = rand()*50;
+	
+	if(rand()==0) {
+		if((vitesseVent[0][2]-ceofVar)<=0) {
+			vitesseVent[0][2]=0;
+		} else {
+			vitesseVent[0][2]-=ceofVar;
+		}
+		
+	} else {
+		vitesseVent[0][2]+=ceofVar;
+	}
+	//semGive();
+}
+void routineIT_VV3_2() {
+	int coefVar = rand()*50;
+	
+	if(rand()==0) {
+		if((vitesseVent[1][2]-ceofVar)<=0) {
+			vitesseVent[1][2]=0;
+		} else {
+			vitesseVent[1][2]-=ceofVar;
+		}
+		
+	} else {
+		vitesseVent[1][2]+=ceofVar;
+	}
+	//semGive();
+}
+void routineIT_VV3_3() {
+	int coefVar = rand()*50;
+	
+	if(rand()==0) {
+		if((vitesseVent[2][2]-ceofVar)<=0) {
+			vitesseVent[2][2]=0;
+		} else {
+			vitesseVent[2][2]-=ceofVar;
+		}
+		
+	} else {
+		vitesseVent[2][2]+=ceofVar;
+	}
+	//semGive();
+}
+
+void initSignaux(){
+			/*
+			 * Rotation Mât sens horaire
+			 */
+		if(signal(SRMH1, routineIT_RMH1) == SIG_ERR){
+			printf("Problème signal RMH1\n");
+		}
+		
+		if(signal(SRMH2, routineIT_RMH2) == SIG_ERR){
+			printf("Problème signal RMH2\n");
+		}
+		
+		if(signal(SRMH3, routineIT_RMH3) == SIG_ERR){
+			printf("Problème signal RMH3\n");
+		}
+		
+			/*
+			 * Rotation Mât sens anti-horaire
+			 */
+		if(signal(SRMAH1, routineIT_RMAH1) == SIG_ERR){
+			printf("Problème signal RMAH1\n");
+		}
+		
+		if(signal(SRMAH2, routineIT_RMAH2) == SIG_ERR){
+			printf("Problème signal RMAH2\n");
+		}
+		
+		if(signal(SRMAH3, routineIT_RMAH3) == SIG_ERR){
+			printf("Problème signal RMAH3\n");
+		}
+		
+			/*
+			 * Direction du vent moyen
+			 */
+		if(signal(SDVM, routineIT_DVM) == SIG_ERR){
+			printf("Problème signal DVM\n");
+		}
+		
+			/*
+			 * Rotation Rotor
+			 */
+		if(signal(SRR1, routineIT_RR1) == SIG_ERR){
+			printf("Problème signal RR1\n");
+		}
+		
+		if(signal(SRR2, routineIT_RR2) == SIG_ERR){
+			printf("Problème signal RR2\n");
+		}
+		
+		if(signal(SRR3, routineIT_RR3) == SIG_ERR){
+			printf("Problème signal RR3\n");
+		}
+
+			/*
+			 * Vitesse du vent
+			 */
+		if(signal(SVV1_1, routineIT_VV1_1) == SIG_ERR){
+			printf("Problème signal VV1_1\n");
+		}
+		
+		if(signal(SVV1_2, routineIT_VV1_2) == SIG_ERR){
+			printf("Problème signal VV1_2\n");
+		}
+		
+		if(signal(SVV1_3, routineIT_VV1_3) == SIG_ERR){
+			printf("Problème signal VV1_3\n");
+		}
+		
+		
+		if(signal(SVV2_1, routineIT_VV2_1) == SIG_ERR){
+			printf("Problème signal VV2_1\n");
+		}
+		
+		if(signal(SVV2_2, routineIT_VV2_2) == SIG_ERR){
+			printf("Problème signal VV2_2\n");
+		}
+		
+		if(signal(SVV2_3, routineIT_VV2_3) == SIG_ERR){
+			printf("Problème signal VV2_3\n");
+		}
+		
+		
+		if(signal(SVV3_1, routineIT_VV3_1) == SIG_ERR){
+			printf("Problème signal VV3_1\n");
+		}
+		
+		if(signal(SVV3_2, routineIT_VV3_2) == SIG_ERR){
+			printf("Problème signal VV3_2\n");
+		}
+		
+		if(signal(SVV3_3, routineIT_VV3_3) == SIG_ERR){
+			printf("Problème signal VV3_3\n");
+		}
+}
 
 /*
  * rotationMatH_i : simule les signaux des capteurs de rotation des mâts dans le sens horaire
@@ -36,11 +329,30 @@
  * 
  * void -> void
  */
-void rotationMatH_1(void){
-	
+void rotationMatH_1(int arg) {
+	int temp = arg;
+	while(temp!=0) {
+		raise(SRMH1);
+		//attendre t
+		temp--;
+	}
 }
-void rotationMatH_2(void);
-void rotationMatH_3(void);
+void rotationMatH_2(int arg) {
+	int temp = arg;
+	while(temp!=0) {
+		raise(SRMH2);
+		//attendre t
+		temp--;
+	}
+}
+void rotationMatH_3(int arg)  {
+	int temp = arg;
+	while(temp!=0) {
+		raise(SRMH3);
+		//attendre t
+		temp--;
+	}
+}
 
 /*
  * rotationMatH_i : simule les signaux des capteurs de rotation des mâts dans le sens inverse du sens horaire
@@ -48,9 +360,30 @@ void rotationMatH_3(void);
  * 
  * void -> void
  */
-void rotationMatAH_1(void);
-void rotationMatAH_2(void);
-void rotationMatAH_3(void);
+void rotationMatAH_1(int arg)  {
+	int temp = arg;
+	while(temp!=0) {
+		raise(SRMAH1);
+		//attendre t
+		temp--;
+	}
+}
+void rotationMatAH_2(int arg)  {
+	int temp = arg;
+	while(temp!=0) {
+		raise(SRMAH2);
+		//attendre t
+		temp--;
+	}
+}
+void rotationMatAH_3(int arg)  {
+	int temp = arg;
+	while(temp!=0) {
+		raise(SRMAH3);
+		//attendre t
+		temp--;
+	}
+}
 
 /*
  * vitesseVentj_i : simule les signaux des capteurs de vitesse du vent en position j pour l'éolienne i.
@@ -62,33 +395,98 @@ void rotationMatAH_3(void);
  * 
  * void -> void
  */
-void vitesseVent1_1(void);
-void vitesseVent1_2(void);
-void vitesseVent1_3(void);
+void vitesseVent1_1(void) {
+	while(1) {
+		raise(SVV1_1);
+		//attendre t
+	}
+}
+void vitesseVent1_2(void) {
+	while(1) {
+		raise(SVV1_2);
+		//attendre t
+	}
+}
+void vitesseVent1_3(void) {
+	while(1) {
+		raise(SVV1_3);
+		//attendre t
+	}
+}
 
-void vitesseVent2_1(void);
-void vitesseVent2_2(void);
-void vitesseVent2_3(void);
+void vitesseVent2_1(void) {
+	while(1) {
+		raise(SVV2_1);
+		//attendre t
+	}
+}
+void vitesseVent2_2(void) {
+	while(1) {
+		raise(SVV2_2);
+		//attendre t
+	}
+}
+void vitesseVent2_3(void) {
+	while(1) {
+		raise(SVV2_3);
+		//attendre t
+	}
+}
 
-void vitesseVent3_1(void);
-void vitesseVent3_2(void);
-void vitesseVent3_3(void);
+void vitesseVent3_1(void) {
+	while(1) {
+		raise(SVV3_1);
+		//attendre t
+	}
+}
+void vitesseVent3_2(void) {
+	while(1) {
+		raise(SVV3_2);
+		//attendre t
+	}
+}
+void vitesseVent3_3(void) {
+	while(1) {
+		raise(SVV3_3);
+		//attendre t
+	}
+}
 
 /*
  * rotationRotor_i : simule les signaux envoyés par le capteur de rotation du rotor de l'éolienne i
  * 
  * void -> void
  */
-void rotationRotor_1(void);
-void rotationRotor_2(void);
-void rotationRotor_3(void);
+void rotationRotor_1() {
+	while(1) {
+		raise(SRR1);
+		//attendre t
+	}
+}
+void rotationRotor_2(void) {
+	while(1) {
+		raise(SRR2);
+		//attendre t
+	}
+}
+void rotationRotor_3(void) {
+	while(1) {
+		raise(SRR3);
+		//attendre t
+	}
+}
 
 /*
  * directionVent : simule le signal envoyé par le capteur de direction du vent moyen.
  * 
  * void -> void
  */
-void directionVent(void);
+void directionVent(void) {
+	while(1) {
+		raise(SDVM);
+		//attendre t
+	}
+}
 
 /*
  * chargeBatterie : simule le signal envoyé par le capteur de niveau de charge de la batterie
