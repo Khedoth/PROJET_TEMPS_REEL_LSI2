@@ -579,7 +579,7 @@ void chargeBatterie(void) {
 			
 			consoLamp=tensionOnduleur*temps;
 				
-			switch(postionDemux) {
+			switch(positionDemux) {
 		 		case 0 : variationCharge = variationCharge + alimEol;break; // à adpater pour % charge
 		 		case 1 : edf = edf + alimEol;break;
 		 		default:break;
