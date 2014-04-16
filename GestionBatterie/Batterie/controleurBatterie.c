@@ -8,7 +8,7 @@
  *  chargeBatterie
  *
  * Outputs :
- *  modeBatterie*
+ *  modeBatterie
  *  choixDemux
  *  choixMux
  *
@@ -18,6 +18,7 @@ BOOLEAN forcageAlim;
 int etat;
 int seuilRechargement;
 int seuilUtilisation;
+int modeBatterie;
 
 /*
  * Ensemble des états de la batterie selon les mux et démux :
@@ -44,6 +45,7 @@ void etat_Batterie_Batterie(){
 	else if(chargeBatterie <= 15){
 		etat = 5;
 		choixMux = 1;
+		modeBatterie = 0;
 	}
 }
 
@@ -74,8 +76,8 @@ void etat_Batterie_EDF_Normal(){
 	else if (chargeBatterie > seuilUtilisation){
 		etat = 2;
 		choixMux = 0;
+		modeBatterie = 1;
 	}
-
 }
 
 void etat_EDF_Batterie(){
@@ -102,7 +104,6 @@ void etat_EDF_EDF(){
  */
 
 void controleurBatterie(){
-
 	while (1){
 		switch(etat){
 			case 1 : etat_EDF_Batterie();

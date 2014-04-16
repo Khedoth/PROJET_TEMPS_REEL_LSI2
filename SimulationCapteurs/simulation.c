@@ -252,7 +252,7 @@ void routineIT_EG() {
 
 	// eclairageLampadaire = tensionOnduleur*coef; a changer
 
-	eclairageGlobal = (eclairageNaturel + eclairageLampadaire) / puissance
+	eclairageGlobal = (eclairageNaturel + eclairageLampadaire) / puissance;
 	//semGive
 }
 
