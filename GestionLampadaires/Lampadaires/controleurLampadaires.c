@@ -21,7 +21,7 @@ int puissance;
 int etat;
 int modeOnduleur;
 
-void calculPuissance() {
+void calcul_Puissance() {
 	switch(modeOnduleur) {
 		case 0 : reglageTension = 0;
 			break;
@@ -46,7 +46,7 @@ void etat_Nuit_Eco(){
 			modeOnduleur++;
 		}
 		
-		calculPuissance();
+		calcul_Puissance();
 		eclairageGlobal(reglageTension);
 	}
 	if(temps >= 21600) {
@@ -62,7 +62,7 @@ void etat_Nuit(){
 			modeOnduleur++;
 		}
 		
-		calculPuissance();
+		calcul_Puissance();
 		eclairageGlobal(reglageTension);
 	}
 	if(temps >= 21600) {
@@ -78,7 +78,7 @@ void etat_Matin(){
 			modeOnduleur++;
 		}
 		
-		calculPuissance();
+		calcul_Puissance();
 		eclairageGlobal(reglageTension);
 	}
 	
@@ -99,7 +99,7 @@ void etat_Soir(){
 			modeOnduleur++;
 		}
 		
-		calculPuissance();
+		calcul_Puissance();
 		eclairageGlobal(reglageTension);
 	}
 	
