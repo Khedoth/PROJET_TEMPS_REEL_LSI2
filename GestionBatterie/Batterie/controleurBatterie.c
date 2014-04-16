@@ -26,9 +26,7 @@ int seuilUtilisation;
 
 
 /*
- * etat_Batterie_Batterie() :
- * PRECONDITIONS :
- * 	-
+ * etat_Batterie_Batterie() : etat 2
  */
 void etat_Batterie_Batterie(){
 	if(chargeBatterie == 100){
@@ -47,6 +45,9 @@ void etat_Batterie_Batterie(){
 	}
 }
 
+/*
+ * etat_Batterie_EDF_Forcage : etat 3
+ */
 void etat_Batterie_EDF_Forcage(){
 	if(chargeBatterie == 100){
 		etat = 4;
@@ -66,6 +67,9 @@ void etat_Batterie_EDF_Forcage(){
 	}
 }
 
+/*
+ * etat_Batterie_EDF_Normal() : etat 5
+ */
 void etat_Batterie_EDF_Normal(){
 	if(forcageALIM){
 		etat = 3;
@@ -78,6 +82,9 @@ void etat_Batterie_EDF_Normal(){
 
 }
 
+/*
+ * etat_EDF_Batterie() : etat 1
+ */
 void etat_EDF_Batterie(){
 	if (forcageALIM){
 		etat = 4;
@@ -90,6 +97,9 @@ void etat_EDF_Batterie(){
 	}
 }
 
+/*
+ * etat_EDF_EDF() : etat 4
+ */
 void etat_EDF_EDF(){
 	if (!forcageALIM){
 		etat = 1;
@@ -98,7 +108,7 @@ void etat_EDF_EDF(){
 }
 
 /*
- *
+ * controleurBatterie() : permet de faire les transitions entre les différents états, selon les signaux reçus.
  */
 
 void controleurBatterie(){
