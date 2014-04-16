@@ -17,18 +17,18 @@ int position;
 
 
 /*
- * attente() : ne freine pas.
+ * etat_Attente() : ne freine pas.
  */
 
-void attente(){
+void etat_Attente(){
 	printf("Je suis en position 1");
 }
 
 /*
- * freinerMaxregime() : freine le rotor jusqu'à atteindre la moitié du régime max.
+ * etat_Freiner_Maxregime() : freine le rotor jusqu'à atteindre la moitié du régime max.
  */
 
-void freiner_Maxregime(){
+void etat_Freiner_Maxregime(){
 	if(freinerMaxregime){
 		etat = 3;
 		/* freiner(); // freiner = position
@@ -39,10 +39,10 @@ void freiner_Maxregime(){
 }
 
 /*
- * freinerMiregime() : freine le rotor jusqu'à l'arrêt.
+ * etat_Freiner_Miregime() : freine le rotor jusqu'à l'arrêt.
  */
 
-void freiner_Miregime(){
+void etat_Freiner_Miregime(){
 	if(freinerMiregime){
 		etat = 3;
 		/* freiner(); //freiner = position
@@ -52,10 +52,10 @@ void freiner_Miregime(){
 	}
 
 /*
- * freiner_Arret() : maintient le rotor à l'arrêt.
+ * etat_Freiner_Arret() : maintient le rotor à l'arrêt.
  */
 
-void freiner_Arret(){
+void etat_Freiner_Arret(){
 	/* freiner(); //freiner = position
 	 * JE SUIS A L'ARRET (POSITION 3)
 	 */
@@ -72,19 +72,19 @@ void freinerRotation(){
 	while(1){
 
 		switch(etat){
-			case 0 : attente();
+			case 0 : etat_Attente();
 				 break;
 
-			case 1 : freiner_Miregime();
+			case 1 : etat_Freiner_Miregime();
 				 break;
 
-			case 2 : freiner_Maxregime();
+			case 2 : etat_Freiner_Maxregime();
 				 break;
 
-			case 3 : freiner_Arret();
+			case 3 : etat_Freiner_Arret();
 				 break;
 
-			default : attente();
+			default : etat_Attente();
 				  break;
 
 	}

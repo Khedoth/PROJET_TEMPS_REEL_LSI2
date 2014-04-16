@@ -51,28 +51,28 @@ BOOLEAN etatSysteme;
 
 
 void routineIT_RMH1() {
-	positionEolienne[0]=(positionEolienne[0]+1)%360;
+	positionEolienne[0]=(positionEolienne[0]-1)%360; //a modifier.
 	//semGive();
 }
 void routineIT_RMH2() {
-	positionEolienne[1]=(positionEolienne[1]+1)%360;
+	positionEolienne[1]=(positionEolienne[1]-1)%360;
 	//semGive();
 }
 void routineIT_RMH3() {
-	positionEolienne[1]=(positionEolienne[1]+1)%360;
+	positionEolienne[1]=(positionEolienne[1]-1)%360;
 	//semGive();
 }
 
 void routineIT_RMAH1() {
-	positionEolienne[0]=(positionEolienne[0]-1)%360;
+	positionEolienne[0]=(positionEolienne[0]+1)%360; //a modifier
 	//semGive();
 }
 void routineIT_RMAH2()  {
-	positionEolienne[1]=(positionEolienne[1]-1)%360;
+	positionEolienne[1]=(positionEolienne[1]+1)%360;
 	//semGive();
 }
 void routineIT_RMAH3() {
-	positionEolienne[2]=(positionEolienne[2]-1)%360;
+	positionEolienne[2]=(positionEolienne[2]+1)%360;
 	//semGive();
 }
 
