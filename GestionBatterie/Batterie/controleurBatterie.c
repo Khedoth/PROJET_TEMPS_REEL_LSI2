@@ -1,5 +1,6 @@
 #include "stdlib.h"
 #include "stdio.h"
+#include "simulation.h"
 
 /*
  * Inputs :
@@ -115,6 +116,7 @@ void etat_EDF_EDF(){
 
 void controleurBatterie(){
 	while (1){
+		semTake(sem_Batterie[10], WAIT_FOREVER);
 		switch(etat){
 			case 1 : etat_EDF_Batterie();
 				 break;

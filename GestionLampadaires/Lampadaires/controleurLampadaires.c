@@ -1,5 +1,6 @@
 #include "stdlib.h"
 #include "stdio.h"
+#include "simulation.h"
 
 /*
  * Inputs :
@@ -21,7 +22,7 @@ int puissance;
 int etat;
 int modeOnduleur;
 
-void calculPuissance() {
+void calcul_Puissance() {
 	switch(modeOnduleur) {
 		case 0 : reglageTension = 0;
 			break;
@@ -46,7 +47,7 @@ void etat_Nuit_Eco(){
 			modeOnduleur++;
 		}
 		
-		calculPuissance();
+		calcul_Puissance();
 		eclairageGlobal(reglageTension);
 	}
 	if(temps >= 21600) {
@@ -62,7 +63,7 @@ void etat_Nuit(){
 			modeOnduleur++;
 		}
 		
-		calculPuissance();
+		calcul_Puissance();
 		eclairageGlobal(reglageTension);
 	}
 	if(temps >= 21600) {
@@ -78,7 +79,7 @@ void etat_Matin(){
 			modeOnduleur++;
 		}
 		
-		calculPuissance();
+		calcul_Puissance();
 		eclairageGlobal(reglageTension);
 	}
 	
@@ -99,7 +100,7 @@ void etat_Soir(){
 			modeOnduleur++;
 		}
 		
-		calculPuissance();
+		calcul_Puissance();
 		eclairageGlobal(reglageTension);
 	}
 	
@@ -113,8 +114,8 @@ void etat_Soir(){
 
 void controleurLampadaire(){
 	generationTemps();
-	
 	while (1){
+		semTake(sem_Lampadaires[10], WAIT_FOREVER);
 		switch(etat){
 			case 0 : etat_Nuit_Eco();
 				break;

@@ -9,7 +9,11 @@
  *
  * Outputs :
  *  positionEolienne
- *
+ * 
+ * Ressource critique : positionEolienne => semaphore sur positionEolienne
+ * 
+ * Informations des capteurs reçues toutes les secondes => file de message pour accumuler les infos
+ * 
  */
 
 /*
@@ -17,6 +21,8 @@
  */
 
 void calculPositionMat(){
+	int fileMessage[100];
+	
 	while(1){
 		if(rotationMatH){
 			positionEolienne[0]=(positionEolienne[0]-1)%360;

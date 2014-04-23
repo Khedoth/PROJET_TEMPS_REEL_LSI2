@@ -36,8 +36,8 @@ int positionEolienne[NB_EOL];
 int positionRotor[NB_EOL];
 int directionVentMoyen;
 int vitesseVent[NB_EOL][NB_CAP];
-int positionMux;
-int positionDemux;
+int choixMux;
+int choixDemux;
 int regimeEolienne[NB_EOL];
 int tensionOnduleur;
 int eclairageGlobal;
@@ -46,8 +46,8 @@ int variatonCharge;
 int temps;
 int alimEol;
 int consoLamp;
-BOOLEAN etatSysteme;
 
+BOOLEAN etatSysteme;
 
 
 void routineIT_RMH1() {
@@ -386,7 +386,7 @@ void initSignaux(){
 void rotationMatH_1(int arg) {
 	if(!etatSysteme) {
 		int temp = arg;
-		while(temp!=0&etatSysteme {
+		while(temp!=0&etatSysteme) {
 			raise(SRMH1)
 			//attendre t
 			temp--;
@@ -396,7 +396,7 @@ void rotationMatH_1(int arg) {
 void rotationMatH_2(int arg) {
 	if(!etatSysteme) {
 		int temp = arg;
-		while(temp!=0&etatSysteme {
+		while(temp!=0&etatSysteme) {
 			raise(SRMH2);
 			//attendre t
 			temp--;
@@ -406,7 +406,7 @@ void rotationMatH_2(int arg) {
 void rotationMatH_3(int arg)  {
 	if(!etatSysteme) {
 		int temp = arg;
-		while(temp!=0&etatSysteme {
+		while(temp!=0&etatSysteme) {
 			raise(SRMH3);
 			//attendre t
 			temp--;
@@ -423,7 +423,7 @@ void rotationMatH_3(int arg)  {
 void rotationMatAH_1(int arg)  {
 	if(!etatSysteme) {
 		int temp = arg;
-		while(temp!=0&etatSysteme {
+		while(temp!=0&etatSysteme) {
 			raise(SRMAH1);
 			//attendre t
 			temp--;
@@ -433,7 +433,7 @@ void rotationMatAH_1(int arg)  {
 void rotationMatAH_2(int arg)  {
 	if(!etatSysteme) {
 		int temp = arg;
-		while(temp!=0&etatSysteme {
+		while(temp!=0&etatSysteme) {
 			raise(SRMAH2);
 			//attendre t
 			temp--;
@@ -621,6 +621,9 @@ void temps(void) {
 		//attendre 1 sec
 	}
 }
+
+
+
 
 
 
