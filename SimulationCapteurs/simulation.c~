@@ -36,8 +36,8 @@ int positionEolienne[NB_EOL];
 int positionRotor[NB_EOL];
 int directionVentMoyen;
 int vitesseVent[NB_EOL][NB_CAP];
-int choixMux;
-int choixDemux;
+int positionMux;
+int positionDemux;
 int regimeEolienne[NB_EOL];
 int tensionOnduleur;
 int eclairageGlobal;
@@ -46,33 +46,33 @@ int variatonCharge;
 int temps;
 int alimEol;
 int consoLamp;
-
 BOOLEAN etatSysteme;
 
 
+
 void routineIT_RMH1() {
-	positionEolienne[0]=(positionEolienne[0]-1)%360; //a modifier.
+	positionEolienne[0]=(positionEolienne[0]+1)%360;
 	//semGive();
 }
 void routineIT_RMH2() {
-	positionEolienne[1]=(positionEolienne[1]-1)%360;
+	positionEolienne[1]=(positionEolienne[1]+1)%360;
 	//semGive();
 }
 void routineIT_RMH3() {
-	positionEolienne[1]=(positionEolienne[1]-1)%360;
+	positionEolienne[1]=(positionEolienne[1]+1)%360;
 	//semGive();
 }
 
 void routineIT_RMAH1() {
-	positionEolienne[0]=(positionEolienne[0]+1)%360; //a modifier
+	positionEolienne[0]=(positionEolienne[0]-1)%360;
 	//semGive();
 }
 void routineIT_RMAH2()  {
-	positionEolienne[1]=(positionEolienne[1]+1)%360;
+	positionEolienne[1]=(positionEolienne[1]-1)%360;
 	//semGive();
 }
 void routineIT_RMAH3() {
-	positionEolienne[2]=(positionEolienne[2]+1)%360;
+	positionEolienne[2]=(positionEolienne[2]-1)%360;
 	//semGive();
 }
 
@@ -252,7 +252,7 @@ void routineIT_EG() {
 
 	// eclairageLampadaire = tensionOnduleur*coef; a changer
 
-	eclairageGlobal = (eclairageNaturel + eclairageLampadaire) / puissance;
+	eclairageGlobal = (eclairageNaturel + eclairageLampadaire) / puissance
 	//semGive
 }
 
@@ -386,7 +386,7 @@ void initSignaux(){
 void rotationMatH_1(int arg) {
 	if(!etatSysteme) {
 		int temp = arg;
-		while(temp!=0&etatSysteme) {
+		while(temp!=0&etatSysteme {
 			raise(SRMH1)
 			//attendre t
 			temp--;
@@ -396,7 +396,7 @@ void rotationMatH_1(int arg) {
 void rotationMatH_2(int arg) {
 	if(!etatSysteme) {
 		int temp = arg;
-		while(temp!=0&etatSysteme) {
+		while(temp!=0&etatSysteme {
 			raise(SRMH2);
 			//attendre t
 			temp--;
@@ -406,7 +406,7 @@ void rotationMatH_2(int arg) {
 void rotationMatH_3(int arg)  {
 	if(!etatSysteme) {
 		int temp = arg;
-		while(temp!=0&etatSysteme) {
+		while(temp!=0&etatSysteme {
 			raise(SRMH3);
 			//attendre t
 			temp--;
@@ -423,7 +423,7 @@ void rotationMatH_3(int arg)  {
 void rotationMatAH_1(int arg)  {
 	if(!etatSysteme) {
 		int temp = arg;
-		while(temp!=0&etatSysteme) {
+		while(temp!=0&etatSysteme {
 			raise(SRMAH1);
 			//attendre t
 			temp--;
@@ -433,7 +433,7 @@ void rotationMatAH_1(int arg)  {
 void rotationMatAH_2(int arg)  {
 	if(!etatSysteme) {
 		int temp = arg;
-		while(temp!=0&etatSysteme) {
+		while(temp!=0&etatSysteme {
 			raise(SRMAH2);
 			//attendre t
 			temp--;
@@ -578,9 +578,13 @@ void chargeBatterie(void) {
 			}
 
 			consoLamp=tensionOnduleur*temps;
+<<<<<<< HEAD
+				
+			switch(positionDemux) {
+=======
 
 			switch(choixDemux) {
-
+>>>>>>> 21b0add03b3e19dd723c2a14b41b38738cde3bf0
 		 		case 0 : variationCharge = variationCharge + alimEol;break; // à adpater pour % charge
 		 		case 1 : edf = edf + alimEol;break;
 		 		default:break;
@@ -621,9 +625,6 @@ void temps(void) {
 		//attendre 1 sec
 	}
 }
-
-
-
 
 
 

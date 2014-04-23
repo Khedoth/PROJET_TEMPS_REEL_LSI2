@@ -1,5 +1,6 @@
 #include "stdlib.h"
 #include "stdio.h"
+#include "simulation.h"
 
 /*
  * Inputs :
@@ -113,8 +114,8 @@ void etat_Soir(){
 
 void controleurLampadaire(){
 	generationTemps();
-	
 	while (1){
+		semTake(sem_Lampadaires[10], WAIT_FOREVER);
 		switch(etat){
 			case 0 : etat_Nuit_Eco();
 				break;

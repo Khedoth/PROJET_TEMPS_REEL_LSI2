@@ -183,6 +183,13 @@ void eclairageGlobal(int puissance);
  */
 void temps(void);
 
+/*
+ * initialisation des signaux
+ * 
+ * void -> void
+ */
+void initSignaux(void);
+
 
 #endif
 

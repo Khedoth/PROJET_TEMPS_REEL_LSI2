@@ -21,11 +21,13 @@ int etat;
 int positionRotor; //*
 int moyenneVents;
 int differenceVents;
+BOOLEAN arretUrgence;
 
 
 /*
  * calcul_Moyenne() : calcule la moyenne des vents détectés par les capteurs
  */
+
 void calcul_Moyenne(){
 	 moyenneVents = (vitesseVent[0][0] + vitesseVent[0][1] + vitesseVent[0][2])/3;
 }
@@ -44,7 +46,7 @@ void difference_Vents(){
 }
 
 void etat_Arret(){
-	if(moyenneVents>5) {
+	if(!arretUrgence && moyenneVents>5) {
 		etat = 1;
 	}
 	calcul_Moyenne();
@@ -57,7 +59,7 @@ void etat_Miregime(){
 		etat = 0;
 	} else if(moyenneVents>15) {
 		etat = 2;
-	} else if(differenceVents>20) {
+	} else if(arretUrgence || differenceVents>20) {
 		etat = 3;
 	}
 	calcul_Moyenne();
@@ -70,7 +72,7 @@ void etat_Maxregime(){
 		etat = 0;
 	} else if(differenceVents>10) {
 		etat = 1;
-	} else if(moyenneVents>50) {
+	} else if(arretUrgence || moyenneVents>50) {
 		etat = 3;
 	}
 	calcul_Moyenne();
@@ -87,6 +89,7 @@ void etat_Freinage(){
  * imposerRegime() : modifie le régime courant de la rotation des pales de l'éolienne
  */
 void imposerRegime(){
+	arretUrgence = false;
 	calcul_Moyenne();
 	difference_Vents();
 	etat = 0;

@@ -1,5 +1,6 @@
 #include "stdlib.h"
 #include "stdio.h"
+#include "simulation.h"
 
 /*
  * Inputs :
@@ -13,13 +14,23 @@
  *
  */
 
+void arretUrgence() {
+	arretUrgence = true;
+}
+
+void alarme() {
+	//afficher alarme
+}
+
+void on_off() {
+	
+}
 
  /*
-  *
+  * controleurEolienne() :
   */
 void controleurEolienne(){
-	while(1){
-		if(alarme()){
-			arretUrgence();
-		}
+	
+	semTake(sem_Eolienne[10], WAIT_FOREVER);
+	
 }
