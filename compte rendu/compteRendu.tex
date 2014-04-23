@@ -1,0 +1,76 @@
+\documentclass[a4paper, titlepage]{article}
+
+\usepackage[utf8x]{inputenc}		% accents
+\usepackage[margin=1in]{geometry}	% marges
+\usepackage[francais]{babel}		% langue
+\usepackage{graphicx,subfigure}		% images
+\usepackage{verbatim}			% texte préformaté
+\usepackage{float}			% utilisation d'objet flottant ?
+\usepackage{frame}			% texte encadré
+
+\usepackage{fancyhdr}			% package entếte
+\pagestyle{fancy}			% style de page
+\usepackage{lastpage}			% lastpage, pour le compteur de nb de pages
+
+\renewcommand\headrulewidth{1pt}	% règles pour l'entête
+\fancyhead[L]{Projet Temps-Réel}
+\fancyhead[R]{\bsc{Enssat}}
+
+\renewcommand\footrulewidth{1pt}	% règles pour le bas de page
+\fancyfoot[C]{\today}
+\fancyfoot[L]{\bsc{Biache}-\bsc{Nokaya}}
+\fancyfoot[R]{\textbf{Page \thepage/\pageref{LastPage}}}
+					% nb de pages
+
+\title{Système de gestion de production d'énergie pour un réseau d'éclairage urbain}
+\author{Matthieu \bsc{Biache}, Jean-Michel \bsc{Nokaya}}
+\date{\today}
+
+
+
+\begin{document}
+
+%page de garde
+\makeatletter
+	\begin{titlepage}
+		\centering
+		{\large \textsc{École Nationale Supérieure des Sciences Appliquées et de Technologie}}\\
+		\textsc{Logiciel et Systèmes Informatiques - Deuxième année}
+		% séparateur entre le haut de la feuille et le centre
+		\vfill
+			\textbf{Projet Temps-Réel LSI2}\\
+		\vspace{0.5cm}
+			{\LARGE \textbf{\@title}} \\
+		\vspace{1cm}
+		{\large Matthieu \bsc{Biache}} \\
+		\vspace{0.5cm}
+		{\large Jean-Michel \bsc{Nokaya}} \\ 
+		\vspace{1cm}
+
+		\@date \\
+
+		% séparation entre le centre et le bas de la feuille
+		\vfill
+			% encadré en bas à gauche
+			\includegraphics[height=0.07\textheight]{enssat.png}
+			% espace séparant les coins droit et gauche de la page
+			% => création de trois espaces de même largeur dans le vfill
+			\hfill
+			% encadré en bas à droite
+			\begin{tabular}{l}
+				\large Chargé de cours :\\[0.2cm]
+				\large Benoît \bsc{Vozel} \\
+				\large Encadrant de projet :\\[0.2cm]
+				\large Nicolas \bsc{Estibals}\\
+				\vspace{1cm}
+			\end{tabular}
+	\end{titlepage}
+	\makeatother
+
+	%table des matières
+	\tableofcontents
+
+	%nouvelle page
+	\newpage
+
+\end{document}
